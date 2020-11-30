@@ -17,7 +17,7 @@ public abstract class BasePresenter<V extends BaseView,M extends BaseModel> {
         this.view = view;
         this.model = getModel();
     }
-    public Context getmContext(){
+    public Context getContext(){
         return this.mContext;
     }
     protected abstract M getModel();
