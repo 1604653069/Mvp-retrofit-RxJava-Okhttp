@@ -1,13 +1,16 @@
 package com.retrofit.model.request;
 
-public class QuestUser {
+/**
+ * 向服务器发送数据封装类
+ */
+public class QueryUser {
     private String useraccount;
     private String userpwd;
 
-    public QuestUser() {
+    public QueryUser() {
     }
 
-    public QuestUser(String useraccount, String userpwd) {
+    public QueryUser(String useraccount, String userpwd) {
         this.useraccount = useraccount;
         this.userpwd = userpwd;
     }

@@ -1,20 +1,19 @@
 package com.retrofit.mvp.main;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.retrofit.api.APIServer;
 import com.retrofit.base.BaseModel;
 import com.retrofit.http.RetrofitManager;
-import com.retrofit.model.request.QuestUser;
+import com.retrofit.model.request.QueryUser;
 import com.retrofit.model.response.User;
 import com.retrofit.rxjava.BaseObserver;
 import com.retrofit.rxjava.RxHelper;
 
 public class MainModel extends BaseModel {
-    public void login(Context context,QuestUser questUser,OnLoginDataBackListener onLoginDataBackListener){
+    public void login(Context context, QueryUser queryUser, OnLoginDataBackListener onLoginDataBackListener){
         RetrofitManager.getRetrofit().create(APIServer.class)
-                .login(questUser)
+                .login(queryUser)
                 .compose(RxHelper.observableIO2Main(context))
                 .subscribe(new BaseObserver<User>(context) {
                     @Override

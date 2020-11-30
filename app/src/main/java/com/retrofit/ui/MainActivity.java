@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.retrofit.R;
 import com.retrofit.base.BaseActivity;
-import com.retrofit.model.request.QuestUser;
+import com.retrofit.model.request.QueryUser;
 import com.retrofit.model.response.User;
 import com.retrofit.mvp.main.MainPresenter;
 import com.retrofit.mvp.main.MainView;
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     protected void doSomething() {
-        presenter.login(new QuestUser("333","123456zxA"));
+        presenter.login(new QueryUser("333","123456zxA"));
     }
 
     @Override
