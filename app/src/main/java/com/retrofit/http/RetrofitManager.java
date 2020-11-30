@@ -3,7 +3,7 @@ package com.retrofit.http;
 import android.util.Log;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.retrofit.rxjava.CustomGsonConverterFactory;
+import com.retrofit.gson.CustomGsonConverterFactory;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -14,6 +14,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
 
+/**
+ * 网络数据请求类
+ */
 public class RetrofitManager {
     public static final int DEFAULT_TIME=10;
     private RetrofitManager(){}

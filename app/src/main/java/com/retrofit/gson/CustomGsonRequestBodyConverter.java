@@ -1,4 +1,4 @@
-package com.retrofit.rxjava;
+package com.retrofit.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

@@ -1,5 +1,9 @@
 package com.retrofit.base;
 
+/**
+ * 服务器数据返回类型
+ * @param <T>
+ */
 public class BaseRespon<T> {
     private int code;
     private String msg;
