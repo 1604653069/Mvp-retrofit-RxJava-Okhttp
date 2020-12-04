@@ -54,7 +54,6 @@ public class RetrofitManager {
         return client;
     }
     static class LogInterceptor implements Interceptor {
-        private String TAG = "okhttp";
         @Override
         public okhttp3.Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
