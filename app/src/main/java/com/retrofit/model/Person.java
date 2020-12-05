@@ -1,6 +1,11 @@
 package com.retrofit.model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.List;
+import java.util.Objects;
 
 public class Person {
     private String name;
@@ -47,5 +52,21 @@ public class Person {
                 ", age=" + age +
                 ", addressList=" + addressList +
                 '}';
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &&
+                Objects.equals(name, person.name);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, addressList);
     }
 }
