@@ -10,26 +10,29 @@ import com.retrofit.model.response.User;
 import com.retrofit.rxjava.BaseObserver;
 import com.retrofit.rxjava.RxHelper;
 
-public class MainModel extends BaseModel {
-    public void login(Context context, QueryUser queryUser, OnLoginDataBackListener onLoginDataBackListener){
+public class MainModel extends BaseModel<MainPresenter> {
+
+    public MainModel(MainPresenter presneter) {
+        super(presneter);
+    }
+
+    public void login(Context context, QueryUser queryUser){
+        if(!presneter.isBindView())//如果没有绑定view就不发送请求
+            return;
         RetrofitManager.getRetrofit().create(APIServer.class)
                 .login(queryUser)
                 .compose(RxHelper.observableIO2Main(context))
                 .subscribe(new BaseObserver<User>(context) {
                     @Override
                     public void onSuccess(User user) {
-                        if(onLoginDataBackListener!=null)
-                            onLoginDataBackListener.onLoginSuccessListener(user);
+                        if(presneter!=null)
+                            presneter.loginSuccess(user);
                     }
                     @Override
                     public void onFailure(Throwable t, String errorMessage) {
-                        if(onLoginDataBackListener!=null)
-                            onLoginDataBackListener.onLoginFailListener(errorMessage);
+                       if(presneter!=null)
+                           presneter.loginiFail(errorMessage);
                     }
                 });
-    }
-    public interface OnLoginDataBackListener{
-        void onLoginSuccessListener(User user);
-        void onLoginFailListener(String errorMessage);
     }
 }

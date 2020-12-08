@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
  * @param <P>
  */
 public abstract class BaseActivity<P extends BasePresenter>  extends RxAppCompatActivity implements BaseView {
-    public P presenter;
+    protected P presenter;
     private ProgressDialog progressDialog;
     private Toast toast;
     private boolean isFullScreen =true;
@@ -132,5 +133,12 @@ public abstract class BaseActivity<P extends BasePresenter>  extends RxAppCompat
      */
     public void setFullScreen(boolean fullScreen) {
         isFullScreen = fullScreen;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter.isBindView())
+            presenter.unBindView();
     }
 }
